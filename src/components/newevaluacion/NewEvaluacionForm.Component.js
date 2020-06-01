@@ -8,7 +8,10 @@ import { addAccount } from '../../redux/account/account.actions';
 import { addNotification } from '../../redux/notification/notification.actions';
 import { selectAccount } from '../../redux/account/account.selectors';
 
-import { Registrar } from '../request/EvaluacionRequest.Component';
+import { Routes } from '../routes/Routes';
+
+import { Registrar as RClinte } from '../request/ClienteRequest.Component';
+import { Registrar as REvaluacion } from '../request/EvaluacionRequest.Component';
 
 const NewEvaluacionForm = ({ addAccount, account, addNotification }) => {
 
@@ -19,12 +22,12 @@ const NewEvaluacionForm = ({ addAccount, account, addNotification }) => {
         setDisabled(true);
 
         try{
-            const request = { cliente: { email, nombre }, evaluacion };
-            const oResponse = await Registrar(request);
-
+            const reqCliente = { email, nombre };
+            const oRespCliente = await RClinte(reqCliente);
+            const oRespEval = await REvaluacion({ idCliente: oRespCliente.id, evaluacion });
             setTimeout(() => {
-                addAccount(oResponse);
-                history.push("/evaluaciones");
+                addAccount(oRespCliente);
+                history.push(Routes.Evaluaciones);
                 addNotification({ message: "Se registró su evaluación con éxito", error: false });
                 setDisabled(false);
             }, 2000);
@@ -39,7 +42,7 @@ const NewEvaluacionForm = ({ addAccount, account, addNotification }) => {
     }
 
     const onHandleRedirect = () => {
-        history.push("/evaluaciones");
+        history.push(Routes.Evaluaciones);
     }
 
     return (

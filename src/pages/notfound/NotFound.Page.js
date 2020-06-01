@@ -4,10 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
+import { Routes } from '../../components/routes/Routes';
+
 const IndexPage = () => {
 
     const history = useHistory();
-    const onHandleNew = () => history.push("/");
+    const onHandleNew = () => history.push(Routes.Home);
 
     return (
         <Row>

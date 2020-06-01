@@ -9,16 +9,17 @@ import EvaluacionPage from './pages/evaluaciones/Evaluacion.Page';
 import NotFoundPage from './pages/notfound/NotFound.Page';
 
 import Toast from './components/toast/Toast.Component';
+import { Routes } from './components/routes/Routes';
 
 const App = () => (
     <div className="App-header">
         <Container>
             <Router history={createBrowserHistory()}>
                 <Switch>
-                    <Route path="/" exact component={IndexPage}/>
-                    <Route path="/evaluaciones" exact component={EvaluacionPage}/>
-                    <Route path="/notfound" exact component={NotFoundPage}/>
-                    <Redirect to="/notfound" />
+                    <Route path={Routes.Home} exact component={IndexPage}/>
+                    <Route path={Routes.Evaluaciones} exact component={EvaluacionPage}/>
+                    <Route path={Routes.NotFound} exact component={NotFoundPage}/>
+                    <Redirect to={Routes.NotFound} />
                 </Switch>
             </Router>
         </Container>

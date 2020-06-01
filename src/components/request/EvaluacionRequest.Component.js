@@ -15,7 +15,7 @@ const ListarEvaluacion = async (id) => {
 }
 
 const Registrar = async (request) => {
-   return await PostRequest(`${BaseUrl}evaluar`, request);
+   return await PostRequest(`${BaseUrl}evaluacion`, request);
 }
 
 const Actualizar = async (request) => {

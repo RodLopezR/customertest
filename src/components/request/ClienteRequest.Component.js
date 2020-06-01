@@ -9,11 +9,11 @@ const ListarCliente = async (id) => {
 }
 
 const Registrar = async (cliente) => {
-   return await PostRequest(`${BaseUrl}cliente`, { cliente });
+   return await PostRequest(`${BaseUrl}cliente`, cliente);
 }
 
 const Actualizar = async (cliente) => {
-   return await PutRequest(`${BaseUrl}cliente`, { cliente });
+   return await PutRequest(`${BaseUrl}cliente`, cliente);
 }
 
 const Eliminar = async (id) => {

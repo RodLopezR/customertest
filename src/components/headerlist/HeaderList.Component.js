@@ -14,10 +14,12 @@ import FormControl from 'react-bootstrap/FormControl';
 import ParseDate from '../utils/DateParser';
 import { addAccount } from '../../redux/account/account.actions';
 
+import { Routes } from '../routes/Routes';
+
 const HeaderList = ({ account, addAccount, onLoad, date1, setDate1, date2, setDate2 }) => {
 
     const history = useHistory();
-    const onHandleNew = () => history.push("/");
+    const onHandleNew = () => history.push(Routes.Home);
     const onHandleClean = () => addAccount(null);
     
     const onChangeDate1 = date => setDate1({ show: false, value: date });

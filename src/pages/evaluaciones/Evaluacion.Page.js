@@ -9,11 +9,12 @@ import Button from 'react-bootstrap/Button';
 import ListEvaluacion from '../../components/list/ListEvaluacion.Component';
 
 import { selectAccount } from '../../redux/account/account.selectors';
+import { Routes } from '../../components/routes/Routes';
 
 const EvaluacionPage = ({ account }) => {
 
     const history = useHistory();
-    const onHandleNew = () => history.push("/");
+    const onHandleNew = () => history.push(Routes.Home);
 
     return (
         <Row>

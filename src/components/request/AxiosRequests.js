@@ -2,12 +2,17 @@ import axios from 'axios';
 
 
 
+
 const GetRequest = async (url, params) => {
     return new Promise(function(resolve, reject){
         axios.get(url, params)
             .then(response => {
                 if(response != null && response.data != null && typeof response.data === "object"){
-                    resolve(response.data);
+                    if(response.data.code === 1){
+                        resolve(response.data.data );
+                    }else{
+                        reject({ message: response.data.message });
+                    }
                 }else{ 
                     reject({ message: "No se completó la operación" });
                 }
@@ -25,7 +30,11 @@ const PostRequest = async (url, _params) => {
         axios.post(url, params, headers)
             .then(response => {
                 if(response != null && response.data != null && typeof response.data === "object"){
-                    resolve(response.data);
+                    if(response.data.code === 1){
+                        resolve(response.data.data );
+                    }else{
+                        reject({ message: response.data.message });
+                    }
                 }else{ 
                     reject({ message: "No se completó la operación" });
                 }
@@ -40,7 +49,11 @@ const PutRequest = async (url, params) => {
         axios.put(url, params)
             .then(response => {
                 if(response != null && response.data != null && typeof response.data === "object"){
-                    resolve(response.data);
+                    if(response.data.code === 1){
+                        resolve(response.data.data );
+                    }else{
+                        reject({ message: response.data.message });
+                    }
                 }else{ 
                     reject({ message: "No se completó la operación" });
                 }
@@ -65,7 +78,7 @@ const DeleteRequest = async (url, params) => {
     });
 };
 
-const BaseUrl = "http://localhost:8080/api/";
+const BaseUrl = "http://dockerspringapp-env.eba-8ubmqnvq.sa-east-1.elasticbeanstalk.com/api/";
 
 export {
     GetRequest,
